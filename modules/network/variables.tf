@@ -15,3 +15,4 @@ variable "subnet_name" {
 
 variable "address_space" {}     
 variable "address_prefixes" {}   
+variable "network_rules" {}
