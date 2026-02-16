@@ -1,6 +1,5 @@
 variable "sg_name" {
-    type = list()
-    description = "security group for roboshop"
+   description = "security group for roboshop"
 }
 
 variable "network_name" {
