@@ -13,6 +13,11 @@ variable "subnet_name" {
     description = "subnet for roboshop"
 }
 
+
+variable "public_subnet_name" {}
+variable "private_subnet_name" {} 
 variable "address_space" {}     
-variable "address_prefixes" {}   
+variable "private_subnet_address_prefixes" {}  
+variable "public_subnet_address_prefixes" {}  
 variable "network_rules" {}
+variable "private_subnet_nsg_name" {}
