@@ -1,6 +1,6 @@
 # Inside your VM module's outputs.tf
 output "public_ip" {
-  value = azurerm_linux_virtual_machine.medha_vm.public_ip_address
+  value = azurerm_linux_virtual_machine.medha-vm.public_ip_address
 }
 
 /* output "vm_name" {
