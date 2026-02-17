@@ -1,26 +1,9 @@
-resource "azurerm_container_registry" "roboshop_acr" {
-  name                =  var.acr_name #"roboshopregistry" # No underscores or hyphens!
-  resource_group_name = var.rg_name
-  location            = var.location
-  sku                 = "Basic"
-  admin_enabled       = true # Useful for local testing/login
-}
-
-resource "azurerm_service_plan" "roboshop_svc_plan" {
-  name                = "robotshop-plan"
-  location            = var.location
-  resource_group_name = var.rg_name
-  os_type             = "Linux" # Required for your containers
-  sku_name            = "B1"  # This size can easily handle 8-9 small apps
-}
-
 resource "azurerm_linux_web_app" "robo_apps" {
   
   name                = var.webapp_name
   resource_group_name = var.rg_name
   location            = var.location
-  service_plan_id     = azurerm_service_plan.roboshop_svc_plan.id
-
+  service_plan_id     = var.service_plan_id
    identity {
     type = "SystemAssigned" # This creates the "user" for the Web App
   }
@@ -30,7 +13,7 @@ resource "azurerm_linux_web_app" "robo_apps" {
     container_registry_use_managed_identity = true
     application_stack {
       docker_image_name   = var.image_name
-      docker_registry_url =  "https://${azurerm_container_registry.roboshop_acr.login_server}"
+      docker_registry_url =  "https://${var.acr_login_server}"
       #"https://roboshopregistry.azurecr.io"
   }
   }
@@ -60,7 +43,7 @@ The ACR will say: "I see who you are, but you don't have an 'AcrPull' ticket."
 Your deployment will fail with an Unauthorized or ImagePullBackOff error. */
 
 resource "azurerm_role_assignment" "acr_pull" {
-  scope                = azurerm_container_registry.roboshop_acr.id
+  scope                = var.acr_id
   role_definition_name = "AcrPull"
   principal_id         = azurerm_linux_web_app.robo_apps.identity[0].principal_id
 }
