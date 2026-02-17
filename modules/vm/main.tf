@@ -1,6 +1,5 @@
 resource "azurerm_network_interface" "nic" {
-  count = var.instance_count
-  name                = "${var.vm_name}-nic-${count.index+1}"
+    name                = "${var.vm_name}-nic"
   location            = var.location
   resource_group_name = var.rg_name
 
@@ -11,10 +10,7 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-
-
 resource "azurerm_linux_virtual_machine" "medha-vm" {
-  count = var.instance_count
   name                  = var.vm_name
   location              = var.location
   resource_group_name   = var.rg_name
