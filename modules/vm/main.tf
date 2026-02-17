@@ -19,7 +19,7 @@ resource "azurerm_linux_virtual_machine" "medha-vm" {
 
   admin_ssh_key {
     username = "azureuser"
-    public_key = file("home/admin/Desktop/azureagent_key.pub")
+    public_key = file("/home/admin/Desktop/azureagent_key.pub")
   }
 
     os_disk {
