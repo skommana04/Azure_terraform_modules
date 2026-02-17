@@ -18,7 +18,7 @@ resource "azurerm_linux_virtual_machine" "medha-vm" {
   location              = var.location
   resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.nic.id]
-  size               = "Premium_LRS"
+  size               = "Standard_D2ls_v5"
 
   admin_username        = "azureuser"
 
