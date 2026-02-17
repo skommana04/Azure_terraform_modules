@@ -72,6 +72,6 @@ resource "azurerm_subnet" "medha_subnet_private" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "example" {
-  subnet_id                 = azurerm_subnet.medha_subnet_private.id
-  network_security_group_id = azurerm_network_security_group.private_subnet_nsg.id
+  subnet_id                 = azurerm_subnet.medha_subnet_public.id
+  network_security_group_id = azurerm_network_security_group.ec2_sg.id
 }
