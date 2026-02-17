@@ -43,3 +43,6 @@ resource "azurerm_linux_virtual_machine" "medha-vm" {
 #     environment = "var.env"
 #   }
 }
+
+
+
