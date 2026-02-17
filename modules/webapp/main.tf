@@ -11,7 +11,7 @@ resource "azurerm_service_plan" "roboshop_svc_plan" {
   location            = var.location
   resource_group_name = var.rg_name
   os_type             = "Linux" # Required for your containers
-  sku_name            = "P1v2"  # This size can easily handle 8-9 small apps
+  sku_name            = "B1"  # This size can easily handle 8-9 small apps
 }
 
 resource "azurerm_linux_web_app" "robo_apps" {
