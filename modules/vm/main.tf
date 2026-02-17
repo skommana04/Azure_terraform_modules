@@ -17,6 +17,8 @@ resource "azurerm_linux_virtual_machine" "medha-vm" {
   network_interface_ids = [azurerm_network_interface.nic.id]
   size               = "Standard_DS1_v2"
 
+  admin_username        = "azureuser"
+
   admin_ssh_key {
     username = "azureuser"
     public_key = file("/home/admin/Desktop/azureagent_key.pub")
