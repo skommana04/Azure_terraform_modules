@@ -10,12 +10,15 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
+# This is the "glue" that connects your NSG to your Subnet
+
+
 resource "azurerm_linux_virtual_machine" "medha-vm" {
   name                  = var.vm_name
   location              = var.location
   resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.nic.id]
-  size               = "Standard_DS1_v2"
+  size               = "Premium_LRS"
 
   admin_username        = "azureuser"
 
