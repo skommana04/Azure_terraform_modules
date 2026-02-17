@@ -62,5 +62,5 @@ Your deployment will fail with an Unauthorized or ImagePullBackOff error. */
 resource "azurerm_role_assignment" "acr_pull" {
   scope                = azurerm_container_registry.roboshop_acr.id
   role_definition_name = "AcrPull"
-  principal_id         = azurerm_linux_web_app.robo_apps.principal_id
+  principal_id         = azurerm_linux_web_app.robo_apps.identity[0].principal_id
 }
